@@ -1,0 +1,26 @@
+@startuml
+
+' inital state
+[*] -right-> init
+
+
+' actions
+init: d   := 0
+init: tot := 0
+
+add: tot := tot + a
+
+disp: d := 1
+
+' transitions
+init --> swait
+
+swait --> add: c
+swait --> swait: c' and tot < s
+swait --> disp: c' and tot >= s
+
+add --> swait
+
+disp --> init
+
+@enduml
