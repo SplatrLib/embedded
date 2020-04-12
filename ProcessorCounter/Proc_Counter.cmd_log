@@ -1,0 +1,27 @@
+xst -intstyle ise -ifn "C:/Users/Mina/ProcessorCounter/Proc_Counter.xst" -ofn "C:/Users/Mina/ProcessorCounter/Proc_Counter.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s50a-tq144-4 Proc_Counter.ngc Proc_Counter.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s50a-tq144-4 Proc_Counter.ngc Proc_Counter.ngd  
+map -intstyle ise -p xc3s50a-tq144-4 -cm area -ir off -pr off -c 100 -o Proc_Counter_map.ncd Proc_Counter.ngd Proc_Counter.pcf 
+map -intstyle ise -p xc3s50a-tq144-4 -cm area -ir off -pr off -c 100 -o Proc_Counter_map.ncd Proc_Counter.ngd Proc_Counter.pcf 
+par -w -intstyle ise -ol high -t 1 Proc_Counter_map.ncd Proc_Counter.ncd Proc_Counter.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml Proc_Counter.twx Proc_Counter.ncd -o Proc_Counter.twr Proc_Counter.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s50a-tq144-4 Proc_Counter.ngc Proc_Counter.ngd  
+map -intstyle ise -p xc3s50a-tq144-4 -cm area -ir off -pr off -c 100 -o Proc_Counter_map.ncd Proc_Counter.ngd Proc_Counter.pcf 
+par -w -intstyle ise -ol high -t 1 Proc_Counter_map.ncd Proc_Counter.ncd Proc_Counter.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml Proc_Counter.twx Proc_Counter.ncd -o Proc_Counter.twr Proc_Counter.pcf 
+bitgen -intstyle ise -f Proc_Counter.ut Proc_Counter.ncd 
+bitgen -intstyle ise -f Proc_Counter.ut Proc_Counter.ncd 
+xst -intstyle ise -ifn "C:/Users/Mina/ProcessorCounter/Proc_Counter.xst" -ofn "C:/Users/Mina/ProcessorCounter/Proc_Counter.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s50a-tq144-4 Proc_Counter.ngc Proc_Counter.ngd  
+map -intstyle ise -p xc3s50a-tq144-4 -cm area -ir off -pr off -c 100 -o Proc_Counter_map.ncd Proc_Counter.ngd Proc_Counter.pcf 
+par -w -intstyle ise -ol high -t 1 Proc_Counter_map.ncd Proc_Counter.ncd Proc_Counter.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml Proc_Counter.twx Proc_Counter.ncd -o Proc_Counter.twr Proc_Counter.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PCounterUCF.ucf -p xc3s50a-tq144-4 Proc_Counter.ngc Proc_Counter.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PCounterUCF.ucf -p xc3s50a-tq144-4 Proc_Counter.ngc Proc_Counter.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PCounterUCF.ucf -p xc3s50a-tq144-4 Proc_Counter.ngc Proc_Counter.ngd  
+map -intstyle ise -p xc3s50a-tq144-4 -cm area -ir off -pr off -c 100 -o Proc_Counter_map.ncd Proc_Counter.ngd Proc_Counter.pcf 
+par -w -intstyle ise -ol high -t 1 Proc_Counter_map.ncd Proc_Counter.ncd Proc_Counter.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml Proc_Counter.twx Proc_Counter.ncd -o Proc_Counter.twr Proc_Counter.pcf -ucf PCounterUCF.ucf 
+bitgen -intstyle ise -f Proc_Counter.ut Proc_Counter.ncd 
+bitgen -intstyle ise -f Proc_Counter.ut Proc_Counter.ncd 
+bitgen -intstyle ise -f Proc_Counter.ut Proc_Counter.ncd 

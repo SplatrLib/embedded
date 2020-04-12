@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\Mina\ProcessorCounter\Proc_Counter.ncd
+OUTFILE=C:\Users\Mina\ProcessorCounter\Proc_Counter.bit
+FAMILY=Spartan3A and Spartan3AN
+PART=xc3s50a-4tq144
+WORKINGDIR=C:\Users\Mina\ProcessorCounter
+LICENSE=WebPack
+USER_INFO=211077464_0_0_072

@@ -1,7 +1,11 @@
-library ieee; use ieee.std_logic_1164.all;
+library ieee;
+use ieee.std_logic_1164.all;
+
 entity debouncer is
   port ( clk, reset : in std_logic; -- clk frequency = 50MHz
-  pb : in std_logic; pb_debounced : out std_logic );
+         pb : in std_logic;
+         pb_debounced : out std_logic
+ );
 end entity debouncer;
 
 architecture rtl of debouncer is
@@ -35,5 +39,5 @@ begin
       end if;
     end if;
   end process debounce_pb;
-  
+
 end architecture rtl;

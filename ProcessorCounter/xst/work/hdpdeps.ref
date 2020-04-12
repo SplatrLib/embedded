@@ -1,0 +1,7 @@
+V3 3
+FL C:/Users/Mina/ProcessorCounter/Proc_Counter.vhd 2018/06/26.00:14:10 P.20131013
+EN work/Proc_Counter 1529986460 \
+      FL C:/Users/Mina/ProcessorCounter/Proc_Counter.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/Proc_Counter/Behavioral 1529986461 \
+      FL C:/Users/Mina/ProcessorCounter/Proc_Counter.vhd EN work/Proc_Counter 1529986460
