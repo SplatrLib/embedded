@@ -1,29 +1,29 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    23:33:55 06/25/2018 
--- Design Name: 
--- Module Name:    Proc_Counter - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
+-- Company:
+-- Engineer:
 --
--- Dependencies: 
+-- Create Date:    23:33:55 06/25/2018
+-- Design Name:
+-- Module Name:    Proc_Counter - Behavioral
+-- Project Name:
+-- Target Devices:
+-- Tool versions:
+-- Description:
 --
--- Revision: 
+-- Dependencies:
+--
+-- Revision:
 -- Revision 0.01 - File Created
--- Additional Comments: 
+-- Additional Comments:
 --
 ----------------------------------------------------------------------------------
 library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_1164.all;
 --use IEEE.NUMERIC_STD.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.all;
 
 entity Proc_Counter is
-    Port ( clk : in  STD_LOGIC;
+    port ( clk : in  STD_LOGIC;
            reset : in  STD_LOGIC;
            B : in  STD_LOGIC;
            C : out  STD_LOGIC_VECTOR (7 downto 0));
@@ -37,20 +37,20 @@ signal counter, counternext: STD_LOGIC_VECTOR (7 downto 0);
 
 begin
 --state register
-process(clk, reset) 
+process(clk, reset)
 begin
-if(reset ='0') then
-state <= start;
-counter <= "00000000";
-elsif (clk' event and clk='1') then
-state <= nextstate;
-counter <=counternext;
-end if;
+    if(reset ='0') then
+        state <= start;
+        counter <= "00000000";
+    elsif (clk' event and clk='1') then
+        state <= nextstate;
+        counter <=counternext;
+    end if;
 end process;
 
 --combinational logic
 process(state, B)
-begin 
+begin
 case (state) is
 when start =>
 counternext <="00000000";
