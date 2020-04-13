@@ -1,0 +1,26 @@
+@startuml
+
+title up-down counter fsmd
+
+[*] -right-> start
+start -right-> swait
+swait --> swait : B & D
+
+swait --> ucount : B'
+ucount --> bwait : B'
+ucount --> swait: B
+bwait --> bwait : B'
+bwait --> swait : B
+
+
+swait --> dcount : D'
+dcount --> dwait : D'
+dcount --> swait : D
+dwait --> dwait : D'
+dwait --> swait: D
+
+start: C:=0
+ucount: C=C+1
+dcount: C=C-1
+
+@enduml
