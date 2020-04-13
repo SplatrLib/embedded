@@ -1,0 +1,14 @@
+@startuml
+
+[*] --> start
+start --> swait
+swait --> swait : B
+swait --> count : B'
+count --> bwait : B'
+bwait --> bwait : B'
+bwait --> swait : B
+
+start: count:=0
+count: C=C+1
+
+@enduml

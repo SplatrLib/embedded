@@ -1,22 +1,16 @@
-----------------------------------------------------------------------------------
--- Company:
--- Engineer:
---
--- Create Date:    23:33:55 06/25/2018
--- Design Name:
--- Module Name:    Proc_Counter - Behavioral
--- Project Name:
--- Target Devices:
--- Tool versions:
--- Description:
---
--- Dependencies:
---
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
---
-----------------------------------------------------------------------------------
+/*
+count the number of times an input button is pressed
+output as 8-bit unsigned
+must roll over when the maximum value is reached
+
+inputs:
+clock
+reset
+B: button press
+
+outputs:
+count
+*/
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 --use IEEE.NUMERIC_STD.ALL;
@@ -29,13 +23,12 @@ entity Proc_Counter is
            C : out  STD_LOGIC_VECTOR (7 downto 0));
 end Proc_Counter;
 
-architecture Behavioral of Proc_Counter is
-type statetype is (start, Swait, count, Bwait);
-signal state, nextstate: statetype;
-
-signal counter, counternext: STD_LOGIC_VECTOR (7 downto 0);
-
+architecture behavioral of Proc_Counter is
+    type statetype is (start, swait, count, bwait);
+    signal state, nextstate: statetype;
+    signal counter, counternext: STD_LOGIC_VECTOR (7 downto 0);
 begin
+
 --state register
 process(clk, reset)
 begin
@@ -49,43 +42,45 @@ begin
 end process;
 
 --combinational logic
-process(state, B)
-begin
-case (state) is
-when start =>
-counternext <="00000000";
-nextstate <= Swait;
+process(state, B) begin
+    case (state) is
+        when start =>
+            counternext <="00000000";
+            nextstate <= swait;
 
-when Swait =>
-counternext <=counter;
-if (B='0') then
-nextstate <= count;
-else
-nextstate<= Swait;
-end if;
+        when swait =>
+            counternext <=counter;
 
-when count =>
-counternext <= counter + 1;
-if (B='0') then
-nextstate <= Bwait;
-else
-nextstate<= Swait;
-end if;
+            if (B='0') then
+                nextstate <= count;
+            else
+                nextstate<= swait;
+            end if;
 
-when Bwait =>
-counternext <=counter;
-if (B='0') then
---c <= counter;
-nextstate <= Bwait;
-else
---c <= counter;
-nextstate<= Swait;
-end if;
+        when count =>
+            counternext <= counter + 1;
 
-end case;
+            if (B='0') then
+                nextstate <= bwait;
+            else
+                nextstate<= swait;
+            end if;
+
+        when bwait =>
+            counternext <=counter;
+
+            if (B='0') then
+                --c <= counter;
+                nextstate <= bwait;
+            else
+                --c <= counter;
+                nextstate<= swait;
+            end if;
+    end case;
 end process;
+
 --assign counter to c
 c <= counter;
 
-end Behavioral;
+end architecture behavioral;
 
