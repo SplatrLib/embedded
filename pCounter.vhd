@@ -24,15 +24,15 @@ use IEEE.STD_LOGIC_1164.all;
 --use IEEE.NUMERIC_STD.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.all;
 
-entity Proc_Counter is
+entity pCounter is
     port ( clk : in  STD_LOGIC;
            reset : in  STD_LOGIC;
            B : in  STD_LOGIC;
            D : in STD_LOGIC;
            C : out  STD_LOGIC_VECTOR (7 downto 0));
-end Proc_Counter;
+end pCounter;
 
-architecture behavioral of Proc_Counter is
+architecture behavioral of pCounter is
     type statetype is (start, swait, ucount, bwait, dcount, dwait);
     signal state, nextstate: statetype;
     signal counter, counternext: STD_LOGIC_VECTOR (7 downto 0);
@@ -92,6 +92,7 @@ process(state, B) begin
                 nextstate <= dwait;
             else
                 nextstate <= swait;
+				end if;
 
         when dwait =>
             counternext <= counter;
@@ -108,4 +109,3 @@ end process;
 c <= counter;
 
 end architecture behavioral;
-
