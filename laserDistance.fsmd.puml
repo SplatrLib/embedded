@@ -1,0 +1,43 @@
+/' Laser-Based Distance Measurer
+
+pulse laser, measure time T to sense reflection
+- laser light travels at speed of light, 3*10^8 m/sec
+- distance is thus D = (T sec * 3*10^8 m/sec)/2
+
+      B          +--------------+         L
+      +--------->+              +--------->
+ from button     |  laser-based |     to laser
+                 |  distance    |
+      D  16      |  measurer    |         S
+      <--/-------+              +<--------+
+to display       +--------------+     from sensor
+'/
+
+@startuml
+[*] --> S0
+S0: inital state
+S0: L := '0'
+S0: D := 0
+
+S0 -right-> S1
+S1: wait state
+S1 --> S1: B'
+S1: d_cnt := 1
+
+S1 --> S2: B
+S2: laser on
+S2: L := '1'
+
+S2 -right-> S3
+S3: laser off
+S3: L := '0'
+S3 --> S3: S'/d_cnt++
+
+S3 --> S4: S
+S4: compute D
+S4: D := d_cnt/2
+
+
+S4 --> S1
+@enduml
+

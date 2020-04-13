@@ -1,0 +1,55 @@
+/'
+                          d_reg_clr   +----------+
+B          +------------+------------>|          |  16  D
++--------->+            |             |          +--/--->
+from button|            | d_reg_ld    |          |  to display
+           |            +------------>|          |
+           | controller |             | datapath |
+S          |            | d_ctr_clr   |          |
++--------->+            +------------>|          |
+from sensor|            |             |          |
+           |            | d_ctr_cnt   |          |
+           |            |------------>|          |
+L <--------|            |             +----------+
+to laser   +------------+
+'/
+
+@startuml
+[*] --> S0
+S0: L = 0
+S0: d_reg_clr = 1
+S0: d_reg_ld = 0
+S0: d_cnt_clr = 0
+S0: d_cnt_cnt = 0
+
+S0 -right-> S1
+S1 --> S1: B'
+S1: d_reg_clr = 0
+S1: d_reg_ld = 0
+S1: d_cnt_clr = 1
+S1: d_cnt_cnt = 0
+
+S1 --> S2: B
+S2: L = 1
+S2: d_reg_clr = 0
+S2: d_reg_ld = 0
+S2: d_cnt_clr = 0
+S2: d_cnt_cnt = 0
+
+S2 -right-> S3
+S3: L = 0
+S3: d_reg_clr = 0
+S3: d_reg_ld = 0
+S3: d_cnt_clr = 0
+S3: d_cnt_cnt = 1
+S3 --> S3: S'
+
+S3 --> S4: S
+S4: d_reg_clr = 0
+S4: d_reg_ld = 1
+S4: d_cnt_clr = 0
+S4: d_cnt_cnt = 0
+
+S4 --> S1
+@enduml
+
