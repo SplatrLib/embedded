@@ -1,4 +1,6 @@
-/* https://langster1980.blogspot.com/2015/08/driving-vga-port-using-elbert-v2-and_7.html */
+  
+--/* https://langster1980.blogspot.com/2015/08/driving-vga-port-using-elbert-v2-and_7.html */
+--/* https://langster1980.blogspot.com/2015/08/driving-vga-port-using-elbert-v2-and_7.html */
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -6,10 +8,10 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity VGA_top_module is
   port (
-    /* Input: the 12MHz input clock */
+    --/* Input: the 12MHz input clock */
     Clk : IN STD_LOGIC;
 
-    /* Output: ElbertV2 VGA Display */
+    --/* Output: ElbertV2 VGA Display */
         hsync : OUT STD_LOGIC;
               vsync : OUT STD_LOGIC;
               Red   : OUT STD_LOGIC_VECTOR(2 downto 0);
@@ -21,13 +23,13 @@ end VGA_top_module;
 
 architecture Behavioral of VGA_top_module is
 
- component clocking
+ component clocking_inst
     port(
-        /*Input clock of 12MHz */
+        --/*Input clock of 12MHz */
         CLKIN_IN         : in     std_logic;
 
-        /* Output clock has to been set to 100 MHz.
-        If input clock frequency changes then update clocking_inst to reflect the change */
+        --/* Output clock has to been set to 100 MHz.
+        --If input clock frequency changes then update clocking_inst to reflect the change */
         CLKFX_OUT          : out    std_logic
     );
  end component;
@@ -49,7 +51,7 @@ end component;
 
 begin
 
-clocking_inst : clocking
+ clocking: clocking_inst
    port map (
         CLKIN_IN        => Clk,
         CLKFX_OUT       => clock
