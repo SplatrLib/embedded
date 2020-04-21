@@ -1,3 +1,5 @@
+/* https://langster1980.blogspot.com/2015/08/driving-vga-port-using-elbert-v2-and_7.html */
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
