@@ -38,8 +38,7 @@ architecture sq_ball_arch of pong_graph_st is
 
     -- object output signals
     signal wall_on, bar_on, sq_ball_on: std_logic;
-    signal wall_rgb, bar_rgb, ball_rgb:
-    std_logic_vector(2 downto 0);
+    signal wall_rgb, bar_rgb, ball_rgb: std_logic_vector(2 downto 0);
 
 begin
     -- current pixel
@@ -74,9 +73,13 @@ begin
 
     ball_rgb <= "100"; -- red
 
-    process (video_on, wall_on, bar_on, sq_ball_on, wall_rgb, bar_rgb, ball_rgb) begin
-        if (video_on = ’0’) then
-            graph_rgb <= "000"; -- blank
+    process (
+        video_on,
+        wall_on, bar_on, sq_ball_on,
+        wall_rgb, bar_rgb, ball_rgb
+    ) begin
+        if (video_on = ’0’)
+        then graph_rgb <= "000"; -- blank
         else -- priority encoding implicit here
             if (wall_on = ’1’) then graph_rgb <= wall_rgb;
             elsif (bar_on = ’1’) then graph_rgb <= bar_rgb;
