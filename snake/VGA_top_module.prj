@@ -1,0 +1,4 @@
+vhdl work "vga_display.vhd"
+vhdl work "vga_sync.vhd"
+vhdl work "clocking_inst.vhd"
+vhdl work "vga_top.vhd"
