@@ -75,6 +75,15 @@ begin
             else landscape_on <= '1'
             landscape_rgb <= "00000011";
 
+            -- wall 1
+            if (pixels_on and (not landscape_on) and
+                ((tile_x > 20 ) and
+                (tile_x < (20 + 2 - WALL_THICKNESS)) and
+                (tile_y > 30) and
+                (tile_y < (30 + 5 - WALL_THICKNESS)))
+            )then landscape_on <= '0';
+            else landscape_on <= '1'
+
         end if;
     end process;
 
