@@ -15,16 +15,20 @@ architecture sq_ball_arch of pong_graph_st is
     signal pix_x, pix_y: unsigned(9 downto 0);
     constant MAX_X: integer := 640;
     constant MAX_Y: integer := 480;
+
     -- wall left and right boundary
     constant WALL_X_L: integer := 32;
     constant WALL_X_R: integer := 35;
+
     -- paddle left, right, top, bottom and height
     constant BAR_X_L: integer := 600;
     constant BAR_X_R: integer := 603;
     constant BAR_Y_SIZE: integer := 72;
+
     -- top boundary of paddle -- offset from screen middle
     constant BAR_Y_T: integer := MAX_Y/2 - BAR_Y_SIZE/2;
     constant BAR_Y_B: integer := BAR_Y_T + BAR_Y_SIZE - 1;
+
     -- square ball
     constant BALL_SIZE: integer := 8;
     constant BALL_X_L: integer := 580;
