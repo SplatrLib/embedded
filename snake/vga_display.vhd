@@ -63,7 +63,13 @@ begin
 			tx_grd <= tile_x mod 4;
 			ty_grd <= tile_y mod 4;
 			if((tx_grd = 0) and (ty_grd = 0))
-			then tgrid_on <= '1';
+			then 
+				tx_grd <= x mod 2;
+				ty_grd <= y mod 2;
+				if((tx_grd = 0) and (ty_grd = 0))
+				then tgrid_on <= '1';
+				else tgrid_on <= '0';
+				end if;
 			else tgrid_on <= '0';
 			end if;
 		end if;
