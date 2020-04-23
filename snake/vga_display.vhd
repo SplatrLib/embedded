@@ -26,10 +26,12 @@ architecture Behavioral of VGA_display is
 
 	-- border wall
 	constant WALL_THICKNESS: integer := 2;
-
+	constant grid_rgb: std_logic_vector(7 downto 0) := "11111111";
+	constant wall_rgb: std_logic_vector(7 downto 0) := "00000011";
+	
 	-- object signals indicate if we are within on eof the objects
-	signal pixels_on, wall_on, pgrid_on, tgrid_on: std_logic;
-	signal pixels_rgb, wall_rgb, pgrid_rgb, tgrid_rgb: std_logic_vector(7 downto 0);
+	signal pixels_on, wall_on, grid_on: std_logic;
+	signal pixels_rgb: std_logic_vector(7 downto 0);
 	 
 	-- Intermediate register telling the exact position on display on screen.
 	signal x : integer range 0 to 1023 := 100;
@@ -39,42 +41,24 @@ architecture Behavioral of VGA_display is
 	signal x_grd, y_grd, tx_grd, ty_grd: integer range 0 to 7 := 0;
 
 begin
+
+	grid_object: entity work.obj_grid
+    port map(
+        clock =>  clock,
+		  x => x,
+		  y => y,
+		  tile_x => tile_x,
+		  tile_y => tile_y,
+		  object_on => grid_on
+    );
+	 
+	 
   sw_buf <= sw;
   x <= hcounter;
   y <= vcounter;
   tile_x <= hcounter / TILE_SIZE;
   tile_y <= vcounter / TILE_SIZE;
 
-  pixel_grid: process(clock) begin
-		if rising_edge(clock) then
-			pgrid_rgb <= "11111111";
-			x_grd <= x mod TILE_SIZE;
-			y_grd <= y mod TILE_SIZE;
-			if((x_grd = 0) and (y_grd = 0))
-			then pgrid_on <= '1';
-			else pgrid_on <= '0';
-			end if;
-		end if;
-  end process;
-  
-  tile_grid: process(clock) begin
-	if rising_edge(clock) then
-			tgrid_rgb <= "11111100";
-			tx_grd <= tile_x mod 4;
-			ty_grd <= tile_y mod 4;
-			if((tx_grd = 0) and (ty_grd = 0))
-			then 
-				tx_grd <= x mod 2;
-				ty_grd <= y mod 2;
-				if((tx_grd = 0) and (ty_grd = 0))
-				then tgrid_on <= '1';
-				else tgrid_on <= '0';
-				end if;
-			else tgrid_on <= '0';
-			end if;
-		end if;
-  end process;
-  
   -- background, switch controlled
   scan_area: process(clock) begin
 		if rising_edge(clock) then
@@ -92,8 +76,6 @@ begin
   
   object_map: process(clock) begin
 	if rising_edge(clock) then
-		wall_rgb <= "00000011"; -- blue
-		
 		-- outer border wall
 		if( (tile_x >= WALL_THICKNESS) and
 			 (tile_x < TILES_X-WALL_THICKNESS) and
@@ -106,11 +88,10 @@ begin
    end if;
   end process;
   
-	process (pixels_on, wall_on, pixels_rgb, wall_rgb, pgrid_on, pgrid_rgb, tgrid_on, tgrid_rgb) begin
+	process (pixels_on, wall_on, pixels_rgb, grid_on) begin
 		if (pixels_on = '0') then pixels <= "00000000"; -- blank
 		else
-		   if (pgrid_on = '1') then pixels <= pgrid_rgb;
-			elsif (tgrid_on = '1') then pixels <= tgrid_rgb;
+		   if (grid_on = '1') then pixels <= grid_rgb;
 			elsif (wall_on = '1') then pixels <= wall_rgb;
 			else pixels <= pixels_rgb;
 			end if;
