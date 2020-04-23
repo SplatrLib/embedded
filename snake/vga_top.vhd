@@ -13,7 +13,11 @@ entity VGA_top_module is
         --/* Output: ElbertV2 VGA Display */
         hsync : OUT STD_LOGIC;
         vsync : OUT STD_LOGIC;
-        rgb   : OUT STD_LOGIC_VECTOR(7 downto 0)
+        rgb   : OUT STD_LOGIC_VECTOR(7 downto 0);
+		  UP: in std_logic;
+		  DOWN: in std_logic;
+		  LEFT: in std_logic;
+		  RIGHT: in std_logic
     );
 
 end VGA_top_module;
@@ -39,7 +43,11 @@ architecture Behavioral of VGA_top_module is
             -- Output for the VGA Display
             hsync    : out std_logic;
             vsync    : out std_logic;
-            rgb      : out std_logic_vector(7 downto 0)
+            rgb      : out std_logic_vector(7 downto 0);
+				UP: in std_logic;
+			  DOWN: in std_logic;
+			  LEFT: in std_logic;
+			  RIGHT: in std_logic
         );
     end component;
 
@@ -59,7 +67,11 @@ begin
 		  sw => sw,
         hsync => hsync,
         vsync => vsync,
-        rgb => rgb
+        rgb => rgb,
+		  UP => UP,
+			DOWN => DOWN,
+			LEFT => LEFT,
+			RIGHT => RIGHT
     );
 
 end architecture Behavioral;

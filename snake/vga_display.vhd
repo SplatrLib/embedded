@@ -10,9 +10,12 @@ entity VGA_display is port
   -- The counter tells whether the correct position on the screen is reached where the data is to be displayed.
   hcounter: in integer range 0 to 1023;
   vcounter: in integer range 0 to 1023;
-
   -- Output the colour that should appear on the screen.
-  pixels : out std_logic_vector(7 downto 0)
+  pixels : out std_logic_vector(7 downto 0);
+  UP: in std_logic;
+  DOWN: in std_logic;
+  LEFT: in std_logic;
+  RIGHT: in std_logic
  ); end VGA_display;
 
 architecture Behavioral of VGA_display is
@@ -28,8 +31,8 @@ architecture Behavioral of VGA_display is
 	constant WALL_THICKNESS: integer := 2;
 
 	-- object signals indicate if we are within on eof the objects
-	signal pixels_on, wall_on, grid_on: std_logic;
-	signal pixels_rgb, grid_rgb, wall_rgb: std_logic_vector(7 downto 0);
+	signal pixels_on, wall_on, grid_on, snake_on: std_logic;
+	signal pixels_rgb, grid_rgb, wall_rgb, snake_rgb: std_logic_vector(7 downto 0);
 	 
 	-- Intermediate register telling the exact position on display on screen.
 	signal x : integer range 0 to 1023 := 100;
@@ -41,51 +44,69 @@ architecture Behavioral of VGA_display is
 begin
 
 	grid_object: entity work.obj_grid
-	port map(
-	clock =>  clock,
+    port map(
+        clock =>  clock,
 		  x => x,
 		  y => y,
 		  tile_x => tile_x,
 		  tile_y => tile_y,
 		  object_on => grid_on,
 		  object_rgb => grid_rgb
-	);
+    );
 	 
-	landscape_obj: entity work.obj_landscape
-	port map(
-	clock =>  clock,
+	 landscape_obj: entity work.obj_landscape
+    port map(
+        clock =>  clock,
 		  tile_x => tile_x,
 		  tile_y => tile_y,
 		  object_on => wall_on,
 		  object_rgb => wall_rgb
-	);
+    );
+	 
+	 snake_obj: entity work.obj_snake
+	 port map(
+		clock =>  clock,
+		tile_x => tile_x,
+		tile_y => tile_y,
+		object_on => snake_on,
+		object_rgb => snake_rgb,
+		UP => UP,
+		DOWN => DOWN,
+		LEFT => LEFT,
+		RIGHT => RIGHT
+	 );
 
-	sw_buf <= sw;
-	x <= hcounter;
-	y <= vcounter;
-	tile_x <= hcounter / TILE_SIZE;
-	tile_y <= vcounter / TILE_SIZE;
+  sw_buf <= sw;
+  x <= hcounter;
+  y <= vcounter;
+  tile_x <= hcounter / TILE_SIZE;
+  tile_y <= vcounter / TILE_SIZE;
 
-	-- background, switch controlled
-	scan_area: process(clock) begin
+  -- background, switch controlled
+  scan_area: process(clock) begin
 		if rising_edge(clock) then
-			if ( (x >= 1) and 
-			(x < 480) and 
-			(y >= 1) and 
-			(y < 640 ))
-			then  pixels_on <= '1' ;
-			else pixels_on <='0';
-			end if;
-			pixels_rgb <= sw_buf;
+			 if ( 
+				 (x >= 1) and 
+				 (x < 480) and 
+				 (y >= 1) and 
+				 (y < 640 ))
+			 then  pixels_on <= '1' ;
+			 else pixels_on <='0';
+			 end if;
+			 pixels_rgb <= sw_buf;
 		end if;
-	end process;
+  end process;
 
   
-	process (pixels_on, pixels_rgb, grid_on, wall_on) begin
+	process (pixels_on, pixels_rgb, 
+			grid_on, grid_rgb,
+			wall_on, wall_rgb,
+			snake_on, snake_rgb) begin
 		if (pixels_on = '0') then pixels <= "00000000"; -- blank
 		else
 		   if (grid_on = '1') then pixels <= grid_rgb;
 			elsif (wall_on = '1') then pixels <= wall_rgb;
+			elsif (snake_on = '1') then pixels <= snake_rgb;
 			else pixels <= pixels_rgb;
 			end if;
 		end if;

@@ -8,7 +8,11 @@ entity VGA_sync is
 	        sw : in std_logic_vector(7 downto 0);
            hsync : out  STD_LOGIC;
            vsync : out  STD_LOGIC;
-           rgb : out  STD_LOGIC_VECTOR (7 downto 0)
+           rgb : out  STD_LOGIC_VECTOR (7 downto 0);
+			  UP: in std_logic;
+			  DOWN: in std_logic;
+			  LEFT: in std_logic;
+			  RIGHT: in std_logic
           );
 end VGA_sync;
 
@@ -45,7 +49,11 @@ begin
 		  sw => sw,
         hcounter  =>  nextHCount,
         vcounter => nextVCount,
-        pixels  => clr
+        pixels  => clr,
+		  UP => UP,
+			DOWN => DOWN,
+			LEFT => LEFT,
+			RIGHT => RIGHT
     );
 
     -- The process is carried out for every positive edge of the clock

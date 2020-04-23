@@ -1,3 +1,7 @@
+vhdl work "snake_head.vhd"
+vhdl work "obj_snake.vhd"
+vhdl work "obj_landscape.vhd"
+vhdl work "obj_grid.vhd"
 vhdl work "vga_display.vhd"
 vhdl work "vga_sync.vhd"
 vhdl work "clocking_inst.vhd"

@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-DESKTOP-N71OK3D::  Tue Apr 21 22:04:35 2020
+DESKTOP-N71OK3D::  Thu Apr 23 12:45:16 2020
 
 par -w -intstyle ise -ol high -t 1 VGA_top_module_map.ncd VGA_top_module.ncd
 VGA_top_module.pcf 
@@ -20,12 +20,12 @@ Device speed data version:  "PRODUCTION 1.42 2013-10-13".
 
 Design Summary Report:
 
- Number of External IOBs                          19 out of 108    17%
+ Number of External IOBs                          23 out of 108    21%
 
-   Number of External Input IOBs                  9
+   Number of External Input IOBs                 13
 
-      Number of External Input IBUFs              9
-        Number of LOCed External Input IBUFs      9 out of 9     100%
+      Number of External Input IBUFs             13
+        Number of LOCed External Input IBUFs     13 out of 13    100%
 
 
    Number of External Output IOBs                10
@@ -39,7 +39,7 @@ Design Summary Report:
 
    Number of BUFGMUXs                        3 out of 24     12%
    Number of DCMs                            1 out of 2      50%
-   Number of Slices                         67 out of 704     9%
+   Number of Slices                        105 out of 704    14%
       Number of SLICEMs                      0 out of 352     0%
 
 
@@ -58,40 +58,40 @@ Total REAL time at the beginning of Placer: 1 secs
 Total CPU  time at the beginning of Placer: 1 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:33ac3e98) REAL time: 1 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:c3bcf060) REAL time: 1 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:33ac3e98) REAL time: 1 secs 
+Phase 2.7  Design Feasibility Check (Checksum:c3bcf060) REAL time: 1 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:33ac3e98) REAL time: 1 secs 
+Phase 3.31  Local Placement Optimization (Checksum:c3bcf060) REAL time: 1 secs 
 
 Phase 4.2  Initial Clock and IO Placement
 
-Phase 4.2  Initial Clock and IO Placement (Checksum:3b107046) REAL time: 2 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:d57554a8) REAL time: 1 secs 
 
 Phase 5.30  Global Clock Region Assignment
-Phase 5.30  Global Clock Region Assignment (Checksum:3b107046) REAL time: 2 secs 
+Phase 5.30  Global Clock Region Assignment (Checksum:d57554a8) REAL time: 1 secs 
 
 Phase 6.36  Local Placement Optimization
-Phase 6.36  Local Placement Optimization (Checksum:3b107046) REAL time: 2 secs 
+Phase 6.36  Local Placement Optimization (Checksum:d57554a8) REAL time: 1 secs 
 
 Phase 7.8  Global Placement
-...........
-..
-Phase 7.8  Global Placement (Checksum:e2e54c1e) REAL time: 2 secs 
+..................
+.....
+Phase 7.8  Global Placement (Checksum:bbe636aa) REAL time: 1 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:e2e54c1e) REAL time: 2 secs 
+Phase 8.5  Local Placement Optimization (Checksum:bbe636aa) REAL time: 1 secs 
 
 Phase 9.18  Placement Optimization
-Phase 9.18  Placement Optimization (Checksum:e3bb0bfc) REAL time: 2 secs 
+Phase 9.18  Placement Optimization (Checksum:c710f8e6) REAL time: 1 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:e3bb0bfc) REAL time: 2 secs 
+Phase 10.5  Local Placement Optimization (Checksum:c710f8e6) REAL time: 1 secs 
 
-Total REAL time to Placer completion: 2 secs 
-Total CPU  time to Placer completion: 2 secs 
+Total REAL time to Placer completion: 1 secs 
+Total CPU  time to Placer completion: 1 secs 
 Writing design to file VGA_top_module.ncd
 
 
@@ -99,13 +99,13 @@ Writing design to file VGA_top_module.ncd
 Starting Router
 
 
-Phase  1  : 373 unrouted;      REAL time: 2 secs 
+Phase  1  : 666 unrouted;      REAL time: 2 secs 
 
-Phase  2  : 319 unrouted;      REAL time: 2 secs 
+Phase  2  : 581 unrouted;      REAL time: 2 secs 
 
-Phase  3  : 44 unrouted;      REAL time: 2 secs 
+Phase  3  : 126 unrouted;      REAL time: 2 secs 
 
-Phase  4  : 44 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+Phase  4  : 126 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
 
 Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
 
@@ -136,9 +136,9 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|      VGA_inst/clock |  BUFGMUX_X1Y0| No   |   35 |  0.081     |  0.543      |
+|      VGA_inst/clock |  BUFGMUX_X1Y0| No   |   63 |  0.093     |  0.553      |
 +---------------------+--------------+------+------+------------+-------------+
-|               clock | BUFGMUX_X2Y11| No   |    3 |  0.020     |  0.510      |
+|               clock | BUFGMUX_X2Y11| No   |    3 |  0.046     |  0.507      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -160,9 +160,9 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  PERIOD analysis for net "clocking/CLKFX_B | SETUP       |     7.394ns|     2.605ns|       0|           0
-  UF" derived from  NET "clocking/CLKIN_IBU | HOLD        |     1.332ns|            |       0|           0
-  FG" PERIOD = 83.3333333 ns HIGH 50%       | MINPERIOD   |     6.998ns|     3.002ns|       0|           0
+  PERIOD analysis for net "clocking/CLKFX_B | SETUP       |     6.978ns|     3.021ns|       0|           0
+  UF" derived from  NET "clocking/CLKIN_IBU | HOLD        |     1.395ns|            |       0|           0
+  FG" PERIOD = 83.3333333 ns HIGH 50%       |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
   NET "clocking/CLKIN_IBUFG" PERIOD = 83.33 | MINLOWPULSE |    63.332ns|    20.000ns|       0|           0
   33333 ns HIGH 50%                         |             |            |            |        |            
@@ -179,8 +179,8 @@ Derived Constraints for clocking/CLKIN_IBUFG
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|clocking/CLKIN_IBUFG           |     83.333ns|     20.000ns|     25.017ns|            0|            0|            0|            3|
-| clocking/CLKFX_BUF            |     10.000ns|      3.002ns|          N/A|            0|            0|            3|            0|
+|clocking/CLKIN_IBUFG           |     83.333ns|     20.000ns|     25.175ns|            0|            0|            0|            3|
+| clocking/CLKFX_BUF            |     10.000ns|      3.021ns|          N/A|            0|            0|            3|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
