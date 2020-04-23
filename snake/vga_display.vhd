@@ -21,36 +21,29 @@ architecture Behavioral of VGA_display is
     constant MAX_Y: integer := 480;
 	-- tile mesh 
 	 constant TILE_SIZE: integer := 8;
-	 constant TILES_X: integer := 80;
-	 constant TILES_Y: integer :=60;
-	 
-	  -- wall left and right boundary of wall (full height)
-    constant WALL_X_L: integer := 7;
-    constant WALL_X_R: integer := 10;
-	 -- object output signals -- new signal to indicate if
-    -- scan coord is within ball
-	 
+	 constant TILES_X: integer := 60;
+	 constant TILES_Y: integer := 60;
+
 	 -- border wall
     constant WALL_THICKNESS: integer := 2;
 	 
+	 -- object signals indicate if we are within on eof the objects
     signal pixels_on, wall_on, pgrid_on, tgrid_on: std_logic;
     signal pixels_rgb, wall_rgb, pgrid_rgb, tgrid_rgb: std_logic_vector(7 downto 0);
 	 
  -- Intermediate register telling the exact position on display on screen.
     signal x : integer range 0 to 1023 := 100;
     signal y : integer range 0 to 1023 := 80;
-	 signal tile_x: integer range 0 to TILES_X := 0;
-	 signal tile_y: integer range 0 to TILES_Y := 0;
+	 signal tile_x,tile_y: integer := 0;
 	 signal sw_buf: std_logic_vector(7 downto 0) := sw;
 	 signal x_grd, y_grd, tx_grd, ty_grd: integer range 0 to 7 := 0;
-begin
 
+begin
   sw_buf <= sw;
   x <= hcounter;
   y <= vcounter;
   tile_x <= hcounter / TILE_SIZE;
   tile_y <= vcounter / TILE_SIZE;
-
 
   pixel_grid: process(clock) begin
 		if rising_edge(clock) then
@@ -93,20 +86,13 @@ begin
   
   object_map: process(clock) begin
 	if rising_edge(clock) then
-		-- wall left vertical stripe
-		 if( 
-		  (WALL_X_L <= x) and(x <= WALL_X_R))
-	   then wall_on <= '1';
-		else wall_on <= '0';
-		end if;
 		wall_rgb <= "00000011"; -- blue
 		
 		-- outer border wall
 		if( (tile_x >= WALL_THICKNESS) and
-			 (tile_x < (TILES_X-WALL_THICKNESS)) and
-			 (tile_y >= WALL_THICKNESS) and
-			 (tile_y < (TILES_Y - WALL_THICKNESS))
-		 ) 
+			 (tile_x < TILES_X-WALL_THICKNESS) and
+			 (tile_y >= WALL_THICKNESS ) and
+			 (tile_y < TILES_Y-WALL_THICKNESS)) 
 		then wall_on <= '0';
 		else wall_on <= '1';
 		end if;
