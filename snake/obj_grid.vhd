@@ -10,13 +10,15 @@ entity obj_grid is port(
   tile_x: in integer range 0 to 60;
   tile_y: in integer range 0 to 60;
   
-  object_on: out std_logic
+  object_on: out std_logic;
+  object_rgb: out std_logic_vector(7 downto 0)
 
  ); end obj_grid;
 
 architecture Behavioral of obj_grid is
 	constant TILE_SIZE: integer := 8;
-
+	constant grid_rgb: std_logic_vector(7 downto 0) := "11111111";
+	
 	signal pgrid_on, tgrid_on, grid_on: std_logic;
 	signal x_grd, y_grd, tx_grd, ty_grd: integer range 0 to 7 := 0;
 
@@ -57,4 +59,5 @@ begin
 	end process;
 	
 	object_on <= grid_on;
+	object_rgb <= grid_rgb;
  end Behavioral;
