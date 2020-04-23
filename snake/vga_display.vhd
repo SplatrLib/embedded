@@ -17,26 +17,26 @@ entity VGA_display is port
 
 architecture Behavioral of VGA_display is
 	-- screen dimensions
-    constant MAX_X: integer := 640;
-    constant MAX_Y: integer := 480;
+	constant MAX_X: integer := 640;
+	constant MAX_Y: integer := 480;
 	-- tile mesh 
-	 constant TILE_SIZE: integer := 8;
-	 constant TILES_X: integer := 60;
-	 constant TILES_Y: integer := 60;
+	constant TILE_SIZE: integer := 8;
+	constant TILES_X: integer := 60;
+	constant TILES_Y: integer := 60;
 
-	 -- border wall
-    constant WALL_THICKNESS: integer := 2;
+	-- border wall
+	constant WALL_THICKNESS: integer := 2;
+
+	-- object signals indicate if we are within on eof the objects
+	signal pixels_on, wall_on, pgrid_on, tgrid_on: std_logic;
+	signal pixels_rgb, wall_rgb, pgrid_rgb, tgrid_rgb: std_logic_vector(7 downto 0);
 	 
-	 -- object signals indicate if we are within on eof the objects
-    signal pixels_on, wall_on, pgrid_on, tgrid_on: std_logic;
-    signal pixels_rgb, wall_rgb, pgrid_rgb, tgrid_rgb: std_logic_vector(7 downto 0);
-	 
- -- Intermediate register telling the exact position on display on screen.
-    signal x : integer range 0 to 1023 := 100;
-    signal y : integer range 0 to 1023 := 80;
-	 signal tile_x,tile_y: integer := 0;
-	 signal sw_buf: std_logic_vector(7 downto 0) := sw;
-	 signal x_grd, y_grd, tx_grd, ty_grd: integer range 0 to 7 := 0;
+	-- Intermediate register telling the exact position on display on screen.
+	signal x : integer range 0 to 1023 := 100;
+	signal y : integer range 0 to 1023 := 80;
+	signal tile_x,tile_y: integer := 0;
+	signal sw_buf: std_logic_vector(7 downto 0) := sw;
+	signal x_grd, y_grd, tx_grd, ty_grd: integer range 0 to 7 := 0;
 
 begin
   sw_buf <= sw;
