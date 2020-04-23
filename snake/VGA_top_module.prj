@@ -1,4 +1,5 @@
 vhdl work "snake_head.vhd"
+vhdl work "snake_body.vhd"
 vhdl work "obj_snake.vhd"
 vhdl work "obj_landscape.vhd"
 vhdl work "obj_grid.vhd"

@@ -1,0 +1,733 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Reading design: VGA_top_module.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "VGA_top_module.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "VGA_top_module"
+Output Format                      : NGC
+Target Device                      : xc3s50a-4-tq144
+
+---- Source Options
+Top Module Name                    : VGA_top_module
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Xilinx/Projects/snake/snake_head.vhd" in Library work.
+Entity <snake_head> compiled.
+Entity <snake_head> (Architecture <behavioral>) compiled.
+Compiling vhdl file "C:/Xilinx/Projects/snake/snake_body.vhd" in Library work.
+Entity <snake_body> compiled.
+Entity <snake_body> (Architecture <behavioral>) compiled.
+Compiling vhdl file "C:/Xilinx/Projects/snake/obj_grid.vhd" in Library work.
+Architecture behavioral of Entity obj_grid is up to date.
+Compiling vhdl file "C:/Xilinx/Projects/snake/obj_landscape.vhd" in Library work.
+Architecture behavioral of Entity obj_landscape is up to date.
+Compiling vhdl file "C:/Xilinx/Projects/snake/obj_snake.vhd" in Library work.
+Architecture behavioral of Entity obj_snake is up to date.
+Compiling vhdl file "C:/Xilinx/Projects/snake/vga_display.vhd" in Library work.
+Architecture behavioral of Entity vga_display is up to date.
+Compiling vhdl file "C:/Xilinx/Projects/snake/clocking_inst.vhd" in Library work.
+Architecture behavioral of Entity clocking_inst is up to date.
+Compiling vhdl file "C:/Xilinx/Projects/snake/vga_sync.vhd" in Library work.
+Architecture behavioral of Entity vga_sync is up to date.
+Compiling vhdl file "C:/Xilinx/Projects/snake/vga_top.vhd" in Library work.
+Architecture behavioral of Entity vga_top_module is up to date.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <VGA_top_module> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <clocking_inst> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <VGA_sync> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <VGA_display> in library <work> (architecture <Behavioral>).
+WARNING:Xst:2094 - "C:/Xilinx/Projects/snake/vga_display.vhd" line 41: Default value is ignored for signal <sw_buf>.
+
+Analyzing hierarchy for entity <obj_grid> in library <work> (architecture <Behavioral>).
+
+Analyzing hierarchy for entity <obj_landscape> in library <work> (architecture <Behavioral>).
+
+Analyzing hierarchy for entity <obj_snake> in library <work> (architecture <Behavioral>).
+
+Analyzing hierarchy for entity <snake_head> in library <work> (architecture <Behavioral>).
+
+Analyzing hierarchy for entity <snake_body> in library <work> (architecture <Behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <VGA_top_module> in library <work> (Architecture <behavioral>).
+WARNING:Xst:752 - "C:/Xilinx/Projects/snake/vga_top.vhd" line 58: Unconnected input port 'RST_IN' of component 'clocking_inst' is tied to default value.
+WARNING:Xst:753 - "C:/Xilinx/Projects/snake/vga_top.vhd" line 58: Unconnected output port 'CLKIN_IBUFG_OUT' of component 'clocking_inst'.
+WARNING:Xst:753 - "C:/Xilinx/Projects/snake/vga_top.vhd" line 58: Unconnected output port 'CLK0_OUT' of component 'clocking_inst'.
+Entity <VGA_top_module> analyzed. Unit <VGA_top_module> generated.
+
+Analyzing Entity <clocking_inst> in library <work> (Architecture <behavioral>).
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <CLKIN_IBUFG_INST> in unit <clocking_inst>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <CLKIN_IBUFG_INST> in unit <clocking_inst>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <CLKIN_IBUFG_INST> in unit <clocking_inst>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <CLKIN_IBUFG_INST> in unit <clocking_inst>.
+    Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "CLKFX_DIVIDE =  3" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "CLKFX_MULTIPLY =  25" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "CLKIN_PERIOD =  83.3329999999999980" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "CLKOUT_PHASE_SHIFT =  NONE" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "CLK_FEEDBACK =  1X" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "DESKEW_ADJUST =  SYSTEM_SYNCHRONOUS" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "DFS_FREQUENCY_MODE =  LOW" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "DLL_FREQUENCY_MODE =  LOW" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "DSS_MODE =  NONE" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "DUTY_CYCLE_CORRECTION =  TRUE" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "FACTORY_JF =  C080" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "PHASE_SHIFT =  0" for instance <DCM_SP_INST> in unit <clocking_inst>.
+    Set user-defined property "STARTUP_WAIT =  FALSE" for instance <DCM_SP_INST> in unit <clocking_inst>.
+Entity <clocking_inst> analyzed. Unit <clocking_inst> generated.
+
+Analyzing Entity <VGA_sync> in library <work> (Architecture <behavioral>).
+Entity <VGA_sync> analyzed. Unit <VGA_sync> generated.
+
+Analyzing Entity <VGA_display> in library <work> (Architecture <Behavioral>).
+WARNING:Xst:2094 - "C:/Xilinx/Projects/snake/vga_display.vhd" line 41: Default value is ignored for signal <sw_buf>.
+Entity <VGA_display> analyzed. Unit <VGA_display> generated.
+
+Analyzing Entity <obj_grid> in library <work> (Architecture <Behavioral>).
+Entity <obj_grid> analyzed. Unit <obj_grid> generated.
+
+Analyzing Entity <obj_landscape> in library <work> (Architecture <Behavioral>).
+Entity <obj_landscape> analyzed. Unit <obj_landscape> generated.
+
+Analyzing Entity <obj_snake> in library <work> (Architecture <Behavioral>).
+Entity <obj_snake> analyzed. Unit <obj_snake> generated.
+
+Analyzing Entity <snake_head> in library <work> (Architecture <Behavioral>).
+WARNING:Xst:819 - "C:/Xilinx/Projects/snake/snake_head.vhd" line 38: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <head_pos_x>, <head_pos_y>
+WARNING:Xst:819 - "C:/Xilinx/Projects/snake/snake_head.vhd" line 73: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <LEFT>, <RIGHT>
+Entity <snake_head> analyzed. Unit <snake_head> generated.
+
+Analyzing Entity <snake_body> in library <work> (Architecture <Behavioral>).
+Entity <snake_body> analyzed. Unit <snake_body> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <obj_grid>.
+    Related source file is "C:/Xilinx/Projects/snake/obj_grid.vhd".
+    Found 1-bit register for signal <pgrid_on>.
+    Found 1-bit register for signal <tgrid_on>.
+    Found 3-bit register for signal <tx_grd>.
+    Found 3-bit register for signal <ty_grd>.
+    Found 3-bit register for signal <x_grd>.
+    Found 3-bit register for signal <y_grd>.
+    Summary:
+	inferred  14 D-type flip-flop(s).
+Unit <obj_grid> synthesized.
+
+
+Synthesizing Unit <obj_landscape>.
+    Related source file is "C:/Xilinx/Projects/snake/obj_landscape.vhd".
+    Found 1-bit register for signal <wall_on>.
+    Found 6-bit comparator greatequal for signal <wall_on$cmp_ge0000> created at line 30.
+    Found 6-bit comparator greatequal for signal <wall_on$cmp_ge0001> created at line 30.
+    Found 6-bit comparator less for signal <wall_on$cmp_lt0000> created at line 30.
+    Found 6-bit comparator less for signal <wall_on$cmp_lt0001> created at line 30.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+	inferred   4 Comparator(s).
+Unit <obj_landscape> synthesized.
+
+
+Synthesizing Unit <snake_head>.
+    Related source file is "C:/Xilinx/Projects/snake/snake_head.vhd".
+WARNING:Xst:647 - Input <tile_x> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <tile_y> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 10                                             |
+    | Transitions        | 18                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 6                                              |
+    | Clock              | clock                     (rising_edge)        |
+    | Power Up State     | init                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 6-bit register for signal <head_pos_x>.
+    Found 6-bit addsub for signal <head_pos_x$addsub0000>.
+    Found 6-bit register for signal <head_pos_y>.
+    Found 6-bit addsub for signal <head_pos_y$addsub0000>.
+    Found 1-bit register for signal <moved>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  13 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+Unit <snake_head> synthesized.
+
+
+Synthesizing Unit <snake_body>.
+    Related source file is "C:/Xilinx/Projects/snake/snake_body.vhd".
+    Found 6x6-bit dual-port RAM <Mram_ramy> for signal <ramy>.
+    Found 6x6-bit dual-port RAM <Mram_ramx> for signal <ramx>.
+    Found 1-bit register for signal <has_loc>.
+    Found 6-bit comparator equal for signal <has_loc$cmp_eq0000> created at line 61.
+    Found 6-bit comparator equal for signal <has_loc$cmp_eq0001> created at line 61.
+    Found 3-bit up counter for signal <head>.
+    Found 3-bit up counter for signal <tail>.
+    Summary:
+	inferred   2 RAM(s).
+	inferred   2 Counter(s).
+	inferred   1 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+Unit <snake_body> synthesized.
+
+
+Synthesizing Unit <clocking_inst>.
+    Related source file is "C:/Xilinx/Projects/snake/clocking_inst.vhd".
+Unit <clocking_inst> synthesized.
+
+
+Synthesizing Unit <obj_snake>.
+    Related source file is "C:/Xilinx/Projects/snake/obj_snake.vhd".
+WARNING:Xst:653 - Signal <head_pos_y<31:6>> is used but never assigned. This sourceless signal will be automatically connected to value 00000000000000000000000000.
+WARNING:Xst:653 - Signal <head_pos_x<31:6>> is used but never assigned. This sourceless signal will be automatically connected to value 00000000000000000000000000.
+    Found 1-bit register for signal <head_on>.
+    Found 32-bit comparator equal for signal <head_on$cmp_eq0000> created at line 53.
+    Found 32-bit comparator equal for signal <head_on$cmp_eq0001> created at line 53.
+    Found 1-bit register for signal <snake_on>.
+    Found 8-bit register for signal <snake_rgb>.
+    Summary:
+	inferred  10 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+Unit <obj_snake> synthesized.
+
+
+Synthesizing Unit <VGA_display>.
+    Related source file is "C:/Xilinx/Projects/snake/vga_display.vhd".
+WARNING:Xst:1780 - Signal <y_grd> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <x_grd> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <ty_grd> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <tx_grd> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <tile_y<31:6>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <tile_x<31:6>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 1-bit register for signal <pixels_on>.
+    Found 10-bit comparator greatequal for signal <pixels_on$cmp_ge0000> created at line 88.
+    Found 10-bit comparator greatequal for signal <pixels_on$cmp_ge0001> created at line 88.
+    Found 10-bit comparator less for signal <pixels_on$cmp_lt0000> created at line 88.
+    Found 10-bit comparator less for signal <pixels_on$cmp_lt0001> created at line 88.
+    Found 8-bit register for signal <pixels_rgb>.
+    Summary:
+	inferred   9 D-type flip-flop(s).
+	inferred   4 Comparator(s).
+Unit <VGA_display> synthesized.
+
+
+Synthesizing Unit <VGA_sync>.
+    Related source file is "C:/Xilinx/Projects/snake/vga_sync.vhd".
+    Found 1-bit register for signal <vsync>.
+    Found 8-bit register for signal <rgb>.
+    Found 1-bit register for signal <hsync>.
+    Found 1-bit register for signal <clock>.
+    Found 1-bit register for signal <divide_by_2>.
+    Found 10-bit up counter for signal <hCount>.
+    Found 10-bit comparator greatequal for signal <hsync$cmp_ge0000> created at line 98.
+    Found 10-bit comparator less for signal <hsync$cmp_lt0000> created at line 98.
+    Found 10-bit register for signal <nextHCount>.
+    Found 10-bit adder for signal <nextHCount$addsub0000> created at line 88.
+    Found 10-bit register for signal <nextVCount>.
+    Found 10-bit adder for signal <nextVCount$addsub0000> created at line 85.
+    Found 10-bit comparator greatequal for signal <rgb$cmp_ge0000> created at line 104.
+    Found 10-bit comparator greatequal for signal <rgb$cmp_ge0001> created at line 104.
+    Found 10-bit up counter for signal <vCount>.
+    Found 10-bit comparator greatequal for signal <vsync$cmp_ge0000> created at line 92.
+    Found 10-bit comparator less for signal <vsync$cmp_lt0000> created at line 92.
+    Summary:
+	inferred   2 Counter(s).
+	inferred  32 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   6 Comparator(s).
+Unit <VGA_sync> synthesized.
+
+
+Synthesizing Unit <VGA_top_module>.
+    Related source file is "C:/Xilinx/Projects/snake/vga_top.vhd".
+Unit <VGA_top_module> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 6x6-bit dual-port RAM                                 : 2
+# Adders/Subtractors                                   : 4
+ 10-bit adder                                          : 2
+ 6-bit addsub                                          : 2
+# Counters                                             : 4
+ 10-bit up counter                                     : 2
+ 3-bit up counter                                      : 2
+# Registers                                            : 23
+ 1-bit register                                        : 12
+ 10-bit register                                       : 2
+ 3-bit register                                        : 4
+ 6-bit register                                        : 2
+ 8-bit register                                        : 3
+# Comparators                                          : 18
+ 10-bit comparator greatequal                          : 6
+ 10-bit comparator less                                : 4
+ 32-bit comparator equal                               : 2
+ 6-bit comparator equal                                : 2
+ 6-bit comparator greatequal                           : 2
+ 6-bit comparator less                                 : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <VGA_inst/VGA_display/snake_obj/head_loc/state/FSM> on signal <state[1:4]> with gray encoding.
+------------------------
+ State      | Encoding
+------------------------
+ init       | 0000
+ iwait      | 0001
+ up_go      | 0011
+ up_wait    | 0101
+ down_go    | 0010
+ down_wait  | 0100
+ left_go    | 0110
+ left_wait  | 1100
+ right_go   | 0111
+ right_wait | 1101
+------------------------
+INFO:Xst:2261 - The FF/Latch <tx_grd_2> in Unit <grid_object> is equivalent to the following FF/Latch, which will be removed : <ty_grd_2> 
+INFO:Xst:2261 - The FF/Latch <snake_rgb_1> in Unit <snake_obj> is equivalent to the following FF/Latch, which will be removed : <snake_rgb_2> 
+INFO:Xst:2261 - The FF/Latch <snake_rgb_6> in Unit <snake_obj> is equivalent to the following FF/Latch, which will be removed : <snake_rgb_7> 
+INFO:Xst:2261 - The FF/Latch <snake_rgb_0> in Unit <snake_obj> is equivalent to the following 2 FFs/Latches, which will be removed : <snake_rgb_3> <snake_rgb_4> 
+WARNING:Xst:1426 - The value init of the FF/Latch snake_rgb_6 hinder the constant cleaning in the block snake_obj.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1293 - FF/Latch <tx_grd_2> has a constant value of 0 in block <grid_object>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <snake_rgb_0> has a constant value of 0 in block <snake_obj>. This FF/Latch will be trimmed during the optimization process.
+
+Synthesizing (advanced) Unit <snake_body>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_ramy> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 6-word x 6-bit                      |          |
+    |     clkA           | connected to signal <clock>         | rise     |
+    |     weA            | connected to signal <new_loc>       | high     |
+    |     addrA          | connected to signal <head>          |          |
+    |     diA            | connected to signal <head_y>        |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 6-word x 6-bit                      |          |
+    |     addrB          | connected to signal <tail>          |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_ramx> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 6-word x 6-bit                      |          |
+    |     clkA           | connected to signal <clock>         | rise     |
+    |     weA            | connected to signal <new_loc>       | high     |
+    |     addrA          | connected to signal <head>          |          |
+    |     diA            | connected to signal <head_x>        |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 6-word x 6-bit                      |          |
+    |     addrB          | connected to signal <tail>          |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <snake_body> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# RAMs                                                 : 2
+ 6x6-bit dual-port distributed RAM                     : 2
+# Adders/Subtractors                                   : 4
+ 10-bit adder                                          : 2
+ 6-bit addsub                                          : 2
+# Counters                                             : 4
+ 10-bit up counter                                     : 2
+ 3-bit up counter                                      : 2
+# Registers                                            : 80
+ Flip-Flops                                            : 80
+# Comparators                                          : 18
+ 10-bit comparator greatequal                          : 6
+ 10-bit comparator less                                : 4
+ 32-bit comparator equal                               : 2
+ 6-bit comparator equal                                : 2
+ 6-bit comparator greatequal                           : 2
+ 6-bit comparator less                                 : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1293 - FF/Latch <tx_grd_2> has a constant value of 0 in block <obj_grid>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ty_grd_2> has a constant value of 0 in block <obj_grid>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1426 - The value init of the FF/Latch snake_rgb_7 hinder the constant cleaning in the block obj_snake.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch snake_rgb_6 hinder the constant cleaning in the block obj_snake.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1293 - FF/Latch <snake_rgb_0> has a constant value of 0 in block <obj_snake>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <snake_rgb_3> has a constant value of 0 in block <obj_snake>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <snake_rgb_4> has a constant value of 0 in block <obj_snake>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <snake_rgb_1> in Unit <obj_snake> is equivalent to the following FF/Latch, which will be removed : <snake_rgb_2> 
+INFO:Xst:2261 - The FF/Latch <snake_rgb_6> in Unit <obj_snake> is equivalent to the following FF/Latch, which will be removed : <snake_rgb_7> 
+
+Optimizing unit <VGA_top_module> ...
+
+Optimizing unit <obj_grid> ...
+
+Optimizing unit <snake_head> ...
+
+Optimizing unit <snake_body> ...
+
+Optimizing unit <obj_snake> ...
+
+Optimizing unit <VGA_display> ...
+
+Optimizing unit <VGA_sync> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block VGA_top_module, actual ratio is 19.
+FlipFlop VGA_inst/clock has been replicated 2 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 105
+ Flip-Flops                                            : 105
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : VGA_top_module.ngr
+Top Level Output File Name         : VGA_top_module
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 23
+
+Cell Usage :
+# BELS                             : 294
+#      GND                         : 1
+#      INV                         : 6
+#      LUT1                        : 36
+#      LUT2                        : 37
+#      LUT3                        : 21
+#      LUT4                        : 101
+#      MUXCY                       : 36
+#      MUXF5                       : 14
+#      MUXF6                       : 1
+#      VCC                         : 1
+#      XORCY                       : 40
+# FlipFlops/Latches                : 105
+#      FD                          : 28
+#      FDE                         : 30
+#      FDR                         : 11
+#      FDRE                        : 27
+#      FDS                         : 7
+#      FDSE                        : 2
+# RAMS                             : 12
+#      RAM16X1D                    : 12
+# Clock Buffers                    : 3
+#      BUFG                        : 3
+# IO Buffers                       : 23
+#      IBUF                        : 12
+#      IBUFG                       : 1
+#      OBUF                        : 10
+# DCMs                             : 1
+#      DCM_SP                      : 1
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s50atq144-4 
+
+ Number of Slices:                      121  out of    704    17%  
+ Number of Slice Flip Flops:            105  out of   1408     7%  
+ Number of 4 input LUTs:                225  out of   1408    15%  
+    Number used as logic:               201
+    Number used as RAMs:                 24
+ Number of IOs:                          23
+ Number of bonded IOBs:                  23  out of    108    21%  
+ Number of GCLKs:                         3  out of     24    12%  
+ Number of DCMs:                          1  out of      2    50%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+---------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)     | Load  |
+-----------------------------------+---------------------------+-------+
+VGA_inst/clock3                    | BUFG                      | 114   |
+Clk                                | clocking/DCM_SP_INST:CLKFX| 3     |
+-----------------------------------+---------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 15.892ns (Maximum Frequency: 62.926MHz)
+   Minimum input arrival time before clock: 4.698ns
+   Maximum output required time after clock: 5.531ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'VGA_inst/clock3'
+  Clock period: 8.433ns (frequency: 118.582MHz)
+  Total number of paths / destination ports: 1990 / 282
+-------------------------------------------------------------------------
+Delay:               8.433ns (Levels of Logic = 5)
+  Source:            VGA_inst/VGA_display/snake_obj/body_loc/tail_0 (FF)
+  Destination:       VGA_inst/VGA_display/snake_obj/body_loc/tail_0 (FF)
+  Source Clock:      VGA_inst/clock3 rising
+  Destination Clock: VGA_inst/clock3 rising
+
+  Data Path: VGA_inst/VGA_display/snake_obj/body_loc/tail_0 to VGA_inst/VGA_display/snake_obj/body_loc/tail_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q            16   0.591   1.034  VGA_inst/VGA_display/snake_obj/body_loc/tail_0 (VGA_inst/VGA_display/snake_obj/body_loc/tail_0)
+     RAM16X1D:DPRA0->DPO    1   0.648   0.563  VGA_inst/VGA_display/snake_obj/body_loc/Mram_ramx5 (VGA_inst/VGA_display/snake_obj/body_loc/_varindex0000<4>)
+     LUT4:I0->O            1   0.648   0.563  VGA_inst/VGA_display/snake_obj/body_loc/has_loc_and000093 (VGA_inst/VGA_display/snake_obj/body_loc/has_loc_and000093)
+     LUT4:I0->O            2   0.648   0.479  VGA_inst/VGA_display/snake_obj/body_loc/has_loc_and0000203 (VGA_inst/VGA_display/snake_obj/body_loc/has_loc_and0000203)
+     LUT3:I2->O            1   0.648   0.563  VGA_inst/VGA_display/snake_obj/body_loc/has_loc_and0000212 (VGA_inst/VGA_display/snake_obj/body_loc/has_loc_and0000)
+     LUT4:I0->O            3   0.648   0.531  VGA_inst/VGA_display/snake_obj/body_loc/tail_and00001 (VGA_inst/VGA_display/snake_obj/body_loc/tail_and0000)
+     FDRE:R                    0.869          VGA_inst/VGA_display/snake_obj/body_loc/tail_0
+    ----------------------------------------
+    Total                      8.433ns (4.700ns logic, 3.733ns route)
+                                       (55.7% logic, 44.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'Clk'
+  Clock period: 15.892ns (frequency: 62.926MHz)
+  Total number of paths / destination ports: 3 / 3
+-------------------------------------------------------------------------
+Delay:               1.907ns (Levels of Logic = 0)
+  Source:            VGA_inst/clock_1 (FF)
+  Destination:       VGA_inst/clock (FF)
+  Source Clock:      Clk rising 8.3X
+  Destination Clock: Clk rising 8.3X
+
+  Data Path: VGA_inst/clock_1 to VGA_inst/clock
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.591   0.447  VGA_inst/clock_1 (VGA_inst/clock_1)
+     FDR:R                     0.869          VGA_inst/clock
+    ----------------------------------------
+    Total                      1.907ns (1.460ns logic, 0.447ns route)
+                                       (76.6% logic, 23.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'VGA_inst/clock3'
+  Total number of paths / destination ports: 26 / 14
+-------------------------------------------------------------------------
+Offset:              4.698ns (Levels of Logic = 3)
+  Source:            LEFT (PAD)
+  Destination:       VGA_inst/VGA_display/snake_obj/head_loc/state_FSM_FFd2 (FF)
+  Destination Clock: VGA_inst/clock3 rising
+
+  Data Path: LEFT to VGA_inst/VGA_display/snake_obj/head_loc/state_FSM_FFd2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   0.849   0.812  LEFT_IBUF (LEFT_IBUF)
+     LUT4:I0->O            1   0.648   0.452  VGA_inst/VGA_display/snake_obj/head_loc/state_FSM_FFd2-In11 (VGA_inst/VGA_display/snake_obj/head_loc/state_FSM_FFd2-In11)
+     LUT4:I2->O            1   0.648   0.420  VGA_inst/VGA_display/snake_obj/head_loc/state_FSM_FFd2-In22 (VGA_inst/VGA_display/snake_obj/head_loc/state_FSM_FFd2-In22)
+     FDS:S                     0.869          VGA_inst/VGA_display/snake_obj/head_loc/state_FSM_FFd2
+    ----------------------------------------
+    Total                      4.698ns (3.014ns logic, 1.684ns route)
+                                       (64.2% logic, 35.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'VGA_inst/clock3'
+  Total number of paths / destination ports: 10 / 10
+-------------------------------------------------------------------------
+Offset:              5.531ns (Levels of Logic = 1)
+  Source:            VGA_inst/vsync (FF)
+  Destination:       vsync (PAD)
+  Source Clock:      VGA_inst/clock3 rising
+
+  Data Path: VGA_inst/vsync to vsync
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.591   0.420  VGA_inst/vsync (VGA_inst/vsync)
+     OBUF:I->O                 4.520          vsync_OBUF (vsync)
+    ----------------------------------------
+    Total                      5.531ns (5.111ns logic, 0.420ns route)
+                                       (92.4% logic, 7.6% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 5.29 secs
+ 
+--> 
+
+Total memory usage is 4539872 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   27 (   0 filtered)
+Number of infos    :    9 (   0 filtered)
+

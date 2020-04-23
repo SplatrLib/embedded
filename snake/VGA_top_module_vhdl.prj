@@ -1,4 +1,5 @@
 vhdl work "C:\Xilinx\Projects\snake\snake_head.vhd"
+vhdl work "C:\Xilinx\Projects\snake\snake_body.vhd"
 vhdl work "C:\Xilinx\Projects\snake\obj_snake.vhd"
 vhdl work "C:\Xilinx\Projects\snake\obj_landscape.vhd"
 vhdl work "C:\Xilinx\Projects\snake\obj_grid.vhd"

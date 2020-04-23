@@ -8,6 +8,7 @@ entity snake_head is port(
   tile_y: in integer range 0 to 60;
   pos_x: out integer range 0 to 60;
   pos_y: out integer range 0 to 60;
+  head_moved: out std_logic;
   UP: in std_logic;
   DOWN: in std_logic;
   LEFT: in std_logic;
@@ -15,10 +16,9 @@ entity snake_head is port(
 ); end snake_head;
 
 architecture Behavioral of snake_head is
-	signal head_pos_x, head_pos_x_next: integer := 22;
-	signal head_pos_y, head_pos_y_next: integer := 22;
-	
-	signal head_on: std_logic;
+	signal head_pos_x, head_pos_x_next: integer range 0 to 60 := 22;
+	signal head_pos_y, head_pos_y_next: integer range 0 to 60 := 22;
+	signal moved, moved_next: std_logic;
 
 	type statetype is (init, iwait, up_go, up_wait, down_go, down_wait, left_go, left_wait, right_go, right_wait);
    signal state, nextstate: statetype;
@@ -31,6 +31,7 @@ begin
 			  state <= nextstate;
 			  head_pos_x <= head_pos_x_next;
 			  head_pos_y <= head_pos_y_next;
+			  moved <= moved_next;
 		 end if;
 	end process;
 	
@@ -40,26 +41,32 @@ begin
             when init =>
                 head_pos_x_next <= 22;
 					 head_pos_y_next <= 22;
+					 moved_next <= '0';
 
             when up_go =>
 					 head_pos_x_next <= head_pos_x;
                 head_pos_y_next <= head_pos_y + 1;
+					 moved_next <= '1';
 
             when down_go =>
 					 head_pos_x_next <= head_pos_x;
                 head_pos_y_next <= head_pos_y - 1;
+					 moved_next <= '1';
 					 
 				when right_go =>
 					head_pos_x_next <= head_pos_x + 1;
                head_pos_y_next <= head_pos_y;
+					moved_next <= '1';
 					
 				when left_go =>
 					head_pos_x_next <= head_pos_x - 1;
                head_pos_y_next <= head_pos_y;
+					moved_next <= '1';
 
             when others =>
                 head_pos_x_next <= head_pos_x;
 					 head_pos_y_next <= head_pos_y;
+					 moved_next <= '0';
             end case;
     end process;
 
@@ -125,6 +132,7 @@ begin
 
 	pos_x <= head_pos_x;
 	pos_y <= head_pos_y;
+	head_moved <= moved;
  end Behavioral;
 
 
