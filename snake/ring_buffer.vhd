@@ -15,6 +15,8 @@ entity ring_buffer is
     wr_data : in std_logic_vector(RAM_WIDTH - 1 downto 0);
  
     -- Read port
+    rd_en : in std_logic;
+    rd_valid : out std_logic;
     rd_data : out std_logic_vector(RAM_WIDTH - 1 downto 0);
  
     -- Flags
