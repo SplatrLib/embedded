@@ -12,7 +12,9 @@ entity VGA_sync is
 			  UP: in std_logic;
 			  DOWN: in std_logic;
 			  LEFT: in std_logic;
-			  RIGHT: in std_logic
+			  RIGHT: in std_logic;
+			  START: in std_logic;
+			  RESET: in std_logic
           );
 end VGA_sync;
 
@@ -53,7 +55,9 @@ begin
 		  UP => UP,
 			DOWN => DOWN,
 			LEFT => LEFT,
-			RIGHT => RIGHT
+			RIGHT => RIGHT,
+			START => START,
+			RESET => RESET
     );
 
     -- The process is carried out for every positive edge of the clock

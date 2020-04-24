@@ -17,7 +17,9 @@ entity VGA_top_module is
 		  UP: in std_logic;
 		  DOWN: in std_logic;
 		  LEFT: in std_logic;
-		  RIGHT: in std_logic
+		  RIGHT: in std_logic;
+		  START: in std_logic;
+		  RESET: in std_logic
     );
 
 end VGA_top_module;
@@ -47,7 +49,9 @@ architecture Behavioral of VGA_top_module is
 				UP: in std_logic;
 			  DOWN: in std_logic;
 			  LEFT: in std_logic;
-			  RIGHT: in std_logic
+			  RIGHT: in std_logic;
+			  START: in std_logic;
+			  RESET: in std_logic
         );
     end component;
 
@@ -71,7 +75,9 @@ begin
 		  UP => UP,
 			DOWN => DOWN,
 			LEFT => LEFT,
-			RIGHT => RIGHT
+			RIGHT => RIGHT,
+			START => START,
+			RESET => RESET
     );
 
 end architecture Behavioral;

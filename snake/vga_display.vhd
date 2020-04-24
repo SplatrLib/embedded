@@ -15,7 +15,9 @@ entity VGA_display is port
   UP: in std_logic;
   DOWN: in std_logic;
   LEFT: in std_logic;
-  RIGHT: in std_logic
+  RIGHT: in std_logic;
+  START: in std_logic;
+  RESET: in std_logic
  ); end VGA_display;
 
 architecture Behavioral of VGA_display is
@@ -37,9 +39,8 @@ architecture Behavioral of VGA_display is
 	-- Intermediate register telling the exact position on display on screen.
 	signal x : integer range 0 to 1023 := 100;
 	signal y : integer range 0 to 1023 := 80;
-	signal tile_x,tile_y: integer := 0;
-	signal sw_buf: std_logic_vector(7 downto 0) := sw;
-	signal x_grd, y_grd, tx_grd, ty_grd: integer range 0 to 7 := 0;
+	signal tile_x,tile_y: integer range 0 to TILES_X;
+	signal sw_buf: std_logic_vector(7 downto 0);
 
 begin
 
@@ -73,7 +74,9 @@ begin
 		UP => UP,
 		DOWN => DOWN,
 		LEFT => LEFT,
-		RIGHT => RIGHT
+		RIGHT => RIGHT,
+		START => START,
+		RESET => RESET
 	 );
 
   sw_buf <= sw;

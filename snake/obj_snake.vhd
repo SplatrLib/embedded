@@ -12,7 +12,9 @@ entity obj_snake is port(
   UP: in std_logic;
   DOWN: in std_logic;
   LEFT: in std_logic;
-  RIGHT: in std_logic
+  RIGHT: in std_logic;
+  START: in std_logic;
+  RESET: in std_logic
 
  ); end obj_snake;
 
@@ -20,7 +22,7 @@ architecture Behavioral of obj_snake is
 	constant TILE_SIZE: integer := 8;
 	constant head_rgb: std_logic_vector(7 downto 0) := "11100000";
 	constant body_rgb: std_logic_vector(7 downto 0) := "11000110";
-	constant neck_rbg: std_logic_vector(7 downto 0) := "00111100";
+
 	
 	constant TILES_X: integer := 60;
 	constant TILES_Y: integer := 60;
@@ -37,15 +39,15 @@ begin
   head_loc: entity work.snake_head
 	 port map(
 		clock =>  clock,
-		tile_x => tile_x,
-		tile_y => tile_y,
 		pos_x => head_pos_x,
 		pos_y => head_pos_y,
 		head_moved => head_moved,
 		UP => UP,
 		DOWN => DOWN,
 		LEFT => LEFT,
-		RIGHT => RIGHT
+		RIGHT => RIGHT,
+		START => START,
+		RESET => RESET
 	 );
 	 
   head_obj: process(clock, head_pos_x, head_pos_y) begin
