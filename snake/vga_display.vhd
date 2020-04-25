@@ -43,7 +43,6 @@ architecture Behavioral of VGA_display is
 	signal sw_buf: std_logic_vector(7 downto 0);
 
 begin
-
 	grid_object: entity work.obj_grid
     port map(
         clock =>  clock,

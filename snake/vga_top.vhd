@@ -25,7 +25,6 @@ entity VGA_top_module is
 end VGA_top_module;
 
 architecture Behavioral of VGA_top_module is
-
     component clocking_inst
         port(
             --/*Input clock of 12MHz */
@@ -55,7 +54,7 @@ architecture Behavioral of VGA_top_module is
         );
     end component;
 
-    signal  clock   : std_logic := '0';
+	 signal clock   : std_logic := '0';
 
 begin 
 
@@ -64,7 +63,7 @@ begin
         CLKIN_IN        => Clk,
         CLKFX_OUT       => clock
     );
-
+	 
     VGA_inst: VGA_sync
     port map (
         Clk   => clock,

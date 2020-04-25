@@ -7,11 +7,11 @@
 -- \   \   \/     Version : 14.7
 --  \   \         Application : xaw2vhdl
 --  /   /         Filename : clocking_inst.vhd
--- /___/   /\     Timestamp : 04/21/2020 13:05:24
+-- /___/   /\     Timestamp : 04/24/2020 21:50:17
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
---Command: xaw2vhdl-intstyle C:/Xilinx/Projects/vga_basic/ipcore_dir/clocking_inst.xaw -st clocking_inst.vhd
+--Command: xaw2vhdl-intstyle C:/Xilinx/Projects/snake/ipcore_dir/clocking_inst.xaw -st clocking_inst.vhd
 --Design Name: clocking_inst
 --Device: xc3s50a-4tq144
 --

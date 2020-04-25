@@ -108,7 +108,7 @@ begin
                 if (hCount < 640 and vCount < 480)
                 then
                     --this section of code will cause the display to be Red
-                    rgb <= clr (7 downto 0);
+                    rgb <= clr;
                 end if;
             end if;
 
