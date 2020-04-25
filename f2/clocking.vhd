@@ -7,7 +7,7 @@
 -- \   \   \/     Version : 14.7
 --  \   \         Application : xaw2vhdl
 --  /   /         Filename : clocking.vhd
--- /___/   /\     Timestamp : 04/25/2020 15:10:47
+-- /___/   /\     Timestamp : 04/25/2020 15:48:44
 -- \   \  /  \ 
 --  \___\/\___\ 
 --

@@ -20,36 +20,51 @@ end vga_controller;
 
 architecture Behavioral of vga_controller is
 		signal rgb_out: std_logic_vector(7 downto 0);
-		signal synh, synv: std_logic := '0';
+		signal sync_h, sync_v: std_logic := '0';
+		
+	constant PIXLES: integer := 799;
+	constant SCANLINES: integer := 524;
+	
+	constant MAX_X: integer := 480;
+	constant MAX_Y: integer := 640;
+	
+	constant V_SYNC_START: integer := 490;
+	constant V_SYNC_END: integer := 492;
+	
+	constant H_SYNC_START: integer := 656;
+	constant H_SYNC_END: integer := 752;
 
-     -- Set the resolution of the frame - 640 x 480
-        signal hCount: integer range 0 to 1023 := 640;
-        signal vCount: integer range 0 to 1023 := 480;
+	signal hCount: integer range 0 to PIXLES := MAX_Y;
+	signal vCount: integer range 0 to SCANLINES := MAX_X;
 
-     -- Set the count from where it should start
-        signal nextHCount: integer range 0 to 1023 := 641;
-        signal nextVCount: integer range 0 to 1023 := 480;
+	signal nextHCount: integer range 0 to PIXLES := 641;
+	signal nextVCount: integer range 0 to SCANLINES := 481;
+	
+	signal divide_by_2 : std_logic := '0';
+
+		  
 
 begin
 	rgb <= rgb_out;
-	hsync <= synh;
-	vsync <= synv;
+	hsync <= sync_h;
+	vsync <= sync_v;
 	pos_x <= nextHCount;
 	pos_y <= nextVCount;
 
     -- The process is carried out for every positive edge of the clock
     vgasignal: process(clock)
-        variable divide_by_2 : std_logic := '0';
+
     begin
         -- Make sure the process begins at the correct point between sync pulses
         if rising_edge(clock) then
             -- Further divide down the clock from 50 MHz to 25 MHz
             if divide_by_2 = '1' then
+
                 -- Has an entire scanline been displayed?
-                if(hCount = 799)
+                if(hCount = PIXLES)
                     then hCount <= 0;
                         -- Has an entire frame been displayed?
-                        if(vCount = 524)
+                        if(vCount = SCANLINES)
                             then vCount <= 0;
                             else vCount <= vCount + 1;
                         end if;
@@ -57,11 +72,11 @@ begin
                 end if;
 
                 -- Once the Hcounter has reached the end of the line we reset it to zero
-                if (nextHCount = 799)
+                if (nextHCount = PIXLES)
                     then nextHCount <= 0;
 
                     -- Once the frame has been displayed then reset the Vcounter to zero
-                    if (nextVCount = 524)
+                    if (nextVCount = SCANLINES)
                         then nextVCount <= 0;
                         else nextVCount <= vCount + 1;
                     end if;
@@ -70,27 +85,26 @@ begin
                 end if;
 
                 -- Check if the Vcount is within the minimum and maximum value for the vertical sync signal
-                if (vCount >= 490 and vCount < 492)
-                    then synv <= '0';
-                    else synv <= '1';
+                if (vCount >= V_SYNC_START and vCount < V_SYNC_END)
+                    then sync_v <= '0';
+                    else sync_v <= '1';
                 end if;
 
                 -- Check if the Hcount is within the minimum and maximum value for the horizontal sync signal
-                if (hCount >= 656 and hCount < 752)
-                    then synh <= '0';
-                    else synh <= '1';
+                if (hCount >= H_SYNC_START and hCount < H_SYNC_END)
+                    then sync_h <= '0';
+                    else sync_h <= '1';
                 end if;
 
                 -- If the Vcounter and Hcounter are within 640 and 480 then display the pixels.
-                if (hCount < 640 and vCount < 480)
+                if (hCount < MAX_Y and vCount < MAX_X)
                 then
-                    --this section of code will cause the display to be Red
                     rgb_out <= pixle;
                 end if;
             end if;
 
             -- Set divide_by_2 to zero
-            divide_by_2 := not divide_by_2;
+            divide_by_2 <= not divide_by_2;
         end if;
     end process;
 
