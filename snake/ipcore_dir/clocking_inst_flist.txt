@@ -1,2 +1,0 @@
-# Output products list for <clocking_inst>
-clocking_inst_flist.txt
